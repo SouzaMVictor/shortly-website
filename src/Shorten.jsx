@@ -1,6 +1,10 @@
 import { useState } from "react";
 
 export function Shorten() {
+  const [query, setQuery] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+
   function validURL(str) {
     var pattern = new RegExp(
       "^(https?:\\/\\/)?" + // protocol
@@ -28,9 +32,6 @@ export function Shorten() {
     }
   }
 
-  const [query, setQuery] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
   return (
     <section className="relative bg-gray-100">
       <div className="max-w-4xl mx-auto p-6 space-y-6">
@@ -40,9 +41,9 @@ export function Shorten() {
         >
           <input
             type="text"
-            className={`flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none bg-gray-50 ${
-              errorMsg ? "border-red" : ""
-            } ${successMsg ? "border-green-500" : ""}
+            className={`flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none bg-gray-50 
+              ${errorMsg ? "border-red" : ""}
+             ${successMsg ? "border-green-500" : ""}
             `}
             placeholder="Shorten a link here..."
             id="link-input"
