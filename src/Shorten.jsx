@@ -1,4 +1,14 @@
+import { useState } from "react";
+
 export function Shorten() {
+  function handleClick(e) {
+    e.preventDefault();
+    if (query === "") {
+      setErrorMsg("Please add a link to be shortened");
+    }
+  }
+  const [query, setQuery] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   return (
     <section className="relative bg-gray-100">
       <div className="max-w-4xl mx-auto p-6 space-y-6">
@@ -8,13 +18,27 @@ export function Shorten() {
         >
           <input
             type="text"
-            className="flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none bg-gray-50"
+            className={`flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none bg-gray-50 ${
+              errorMsg ? "border-red" : ""
+            }`}
             placeholder="Shorten a link here..."
             id="link-input"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2">
+          <button
+            className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2"
+            onClick={handleClick}
+          >
             Shorten it!
           </button>
+          {/* error message */}
+          <div
+            className="absolute left-7 bottom-3 text-red text-sm italic"
+            id="error-message"
+          >
+            {errorMsg}
+          </div>
         </form>
         {/* link 1 */}
         <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
