@@ -1,14 +1,36 @@
 import { useState } from "react";
 
 export function Shorten() {
+  function validURL(str) {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  }
+
   function handleClick(e) {
     e.preventDefault();
     if (query === "") {
       setErrorMsg("Please add a link to be shortened");
+      setSuccessMsg("");
+    } else if (!validURL(query)) {
+      setErrorMsg("Please enter a valid link to be shortened");
+      setSuccessMsg("");
+    } else {
+      setErrorMsg("");
+      setSuccessMsg("Sucessfully shortened the link");
     }
   }
+
   const [query, setQuery] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
   return (
     <section className="relative bg-gray-100">
       <div className="max-w-4xl mx-auto p-6 space-y-6">
@@ -20,7 +42,8 @@ export function Shorten() {
             type="text"
             className={`flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none bg-gray-50 ${
               errorMsg ? "border-red" : ""
-            }`}
+            } ${successMsg ? "border-green-500" : ""}
+            `}
             placeholder="Shorten a link here..."
             id="link-input"
             value={query}
@@ -37,7 +60,8 @@ export function Shorten() {
             className="absolute left-7 bottom-3 text-red text-sm italic"
             id="error-message"
           >
-            {errorMsg}
+            {errorMsg && <p className="text-red-500">{errorMsg}</p>}
+            {successMsg && <p className="text-green-500">{successMsg}</p>}
           </div>
         </form>
         {/* link 1 */}
