@@ -56,7 +56,7 @@ export function Shorten() {
           >
             Shorten it!
           </button>
-          {/* error message */}
+          {/* error/success message */}
           <div
             className="absolute left-7 bottom-3 text-red text-sm italic"
             id="error-message"
