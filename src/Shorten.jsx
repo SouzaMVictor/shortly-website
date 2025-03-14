@@ -8,11 +8,53 @@ export function Shorten() {
         >
           <input
             type="text"
-            className="flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none"
-            placeholder="shorten a link here"
+            className="flex-1 p-3 border-2 rounded-lg placeholder-yellow-500 focus:outline-none bg-gray-50"
+            placeholder="Shorten a link here..."
             id="link-input"
           />
+          <button className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2">
+            Shorten it!
+          </button>
         </form>
+        {/* link 1 */}
+        <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
+          <p className="font-bold text-center text-veryDarkViolet md:text-left">
+            https://www.google.com
+          </p>
+
+          <div className="flex flex-col items-center justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
+            <div className="font-bold text-cyan">https://rel.link/j9e9q5</div>
+            <button className="p-2 px-8 text-white bg-cyan rounded-lg hover:opacity-70 focus:outline-none">
+              Copy
+            </button>
+          </div>
+        </div>
+        {/* link 2 */}
+        <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
+          <p className="font-bold text-center text-veryDarkViolet md:text-left">
+            https://www.google.com
+          </p>
+
+          <div className="flex flex-col items-center justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
+            <div className="font-bold text-cyan">https://rel.link/j9e9q5</div>
+            <button className="p-2 px-8 text-white bg-darkViolet rounded-lg hover:opacity-70 focus:outline-none">
+              Copy
+            </button>
+          </div>
+        </div>
+        {/* link 3 */}
+        <div className="flex flex-col items-center justify-between w-full p-6 bg-white rounded-lg md:flex-row">
+          <p className="font-bold text-center text-veryDarkViolet md:text-left">
+            https://www.google.com
+          </p>
+
+          <div className="flex flex-col items-center justify-end flex-1 space-x-4 space-y-2 md:flex-row md:space-y-0">
+            <div className="font-bold text-cyan">https://rel.link/j9e9q5</div>
+            <button className="p-2 px-8 text-white bg-cyan rounded-lg hover:opacity-70 focus:outline-none">
+              Copy
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
