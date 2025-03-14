@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 export function Shorten() {
-  const [query, setQuery] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const [query, setQuery] = useState(""); //query for the input
+  const [errorMsg, setErrorMsg] = useState(""); //error message state
+  const [successMsg, setSuccessMsg] = useState(""); //success message state
 
   function validURL(str) {
     var pattern = new RegExp(
@@ -18,17 +18,17 @@ export function Shorten() {
     return !!pattern.test(str);
   }
 
-  function handleClick(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     if (query === "") {
-      setErrorMsg("Please add a link to be shortened");
-      setSuccessMsg("");
+      setErrorMsg("Please add a link to be shortened"); //set error message
+      setSuccessMsg(""); //does not show success message
     } else if (!validURL(query)) {
-      setErrorMsg("Please enter a valid link to be shortened");
-      setSuccessMsg("");
+      setErrorMsg("Please enter a valid link to be shortened"); //set error message of a valid url
+      setSuccessMsg(""); //does not show success message
     } else {
-      setErrorMsg("");
-      setSuccessMsg("Sucessfully shortened the link");
+      setErrorMsg(""); //does not show error message
+      setSuccessMsg("Sucessfully shortened the link"); //set success message
     }
   }
 
@@ -52,7 +52,7 @@ export function Shorten() {
           />
           <button
             className="px-10 py-3 text-white bg-cyan rounded-lg hover:bg-cyanLight focus:outline-none md:py-2"
-            onClick={handleClick}
+            onClick={handleSubmit}
           >
             Shorten it!
           </button>
